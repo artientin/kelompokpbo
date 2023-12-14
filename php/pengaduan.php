@@ -1,4 +1,3 @@
-Artientin
 <?php
 include 'config.php';
 
