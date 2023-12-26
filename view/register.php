@@ -1,5 +1,5 @@
 <?php
-// error_reporting(0);
+// eqwrror_reporting(0);
 include '../php/config.php';
 include '../php/auth.php';
 // Assuming $conn is your database connection
