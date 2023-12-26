@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 13, 2023 at 08:17 AM
+-- Generation Time: Dec 26, 2023 at 05:00 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -32,20 +32,9 @@ CREATE TABLE `kejadian` (
   `lokasi` varchar(255) NOT NULL,
   `tanggal` varchar(255) NOT NULL,
   `harapan` varchar(255) NOT NULL,
-  `file_pendukung` varchar(255) NOT NULL
+  `file_pendukung` varchar(255) NOT NULL,
+  `id` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `kejadian`
---
-
-INSERT INTO `kejadian` (`perihal`, `lokasi`, `tanggal`, `harapan`, `file_pendukung`) VALUES
-('222222', 'jeno', '22 januari', 'harap', 'Screenshot (240).png'),
-('222222', 'jeno', '22 januari', 'harap', 'Screenshot (240).png'),
-('222222', 'jeno', '22 januari', 'harap', 'Screenshot (240).png'),
-('222222', 'jeno', '22 januari', 'harap', 'Screenshot (240).png'),
-('222222', 'jeno', '22 januari', 'harap', 'Screenshot (240).png'),
-('halo', 'rumah', '22 feb 2023', 'sehatt', 'Screenshot (279).png');
 
 -- --------------------------------------------------------
 
@@ -60,13 +49,6 @@ CREATE TABLE `kontak` (
   `telpon` varchar(255) NOT NULL,
   `pesan` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `kontak`
---
-
-INSERT INTO `kontak` (`id`, `nama`, `email`, `telpon`, `pesan`) VALUES
-(0, 'Tien', 'leejeno@gmail.com', '082378990872', 'Halo');
 
 -- --------------------------------------------------------
 
@@ -88,6 +70,7 @@ CREATE TABLE `masuk` (
 --
 
 CREATE TABLE `pengadu` (
+  `id` int(255) NOT NULL,
   `nama` varchar(200) NOT NULL,
   `jenis_kelamin` varchar(200) NOT NULL,
   `tipe_identitas` varchar(200) NOT NULL,
@@ -100,20 +83,20 @@ CREATE TABLE `pengadu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `pengadu`
---
-
-INSERT INTO `pengadu` (`nama`, `jenis_kelamin`, `tipe_identitas`, `nomor_identitas`, `file_identitas`, `domisili`, `nomor_telpon`, `nomor_fax`, `email`) VALUES
-('jjjj', 'L', 'KTP', 0, 'Screenshot (243).png', '', 22222222, 222222, 'jungkook@gmail.com'),
-('jjjj', 'L', 'KTP', 0, 'Screenshot (243).png', '', 22222222, 222222, 'jungkook@gmail.com'),
-('jjjj', 'L', 'KTP', 9909189, 'Screenshot (243).png', '', 22222222, 222222, 'jungkook@gmail.com'),
-('jjjj', 'L', 'KTP', 9909189, 'Screenshot (243).png', 'ayam', 22222222, 222222, 'jungkook@gmail.com'),
-('jjjj', 'L', 'KTP', 9909189, 'Screenshot (243).png', 'ayam', 22222222, 222222, 'jungkook@gmail.com'),
-('jaemin', 'L', 'KTP', 73827, 'Screenshot (268).png', 'tanukila', 73737373, 6372627, 'taehyung@gmail.com');
-
---
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `kejadian`
+--
+ALTER TABLE `kejadian`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `kontak`
+--
+ALTER TABLE `kontak`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `masuk`
@@ -122,14 +105,38 @@ ALTER TABLE `masuk`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `pengadu`
+--
+ALTER TABLE `pengadu`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `kejadian`
+--
+ALTER TABLE `kejadian`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `kontak`
+--
+ALTER TABLE `kontak`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `masuk`
 --
 ALTER TABLE `masuk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `pengadu`
+--
+ALTER TABLE `pengadu`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
