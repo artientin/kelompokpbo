@@ -1,4 +1,3 @@
-/rahmah
 <?php
 include '../php/config.php';
 include '../php/kontak.php';
