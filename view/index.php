@@ -20,7 +20,7 @@ if(!isset($_SESSION['username'])){
   <meta name="description" content="" />
   <meta name="author" content="" />
 
-  <title>PBO</title>
+  <title>Pemrograman Berorientasi Objek</title>
 
 
   <!-- bootstrap core css -->
