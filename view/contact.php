@@ -17,7 +17,7 @@ include '../php/kontak.php';
   <meta name="description" content="" />
   <meta name="author" content="" />
 
-  <title>PBO</title>
+  <title>Pemrograman Berorientasi Objek</title>
 
 
   <!-- bootstrap core css -->
