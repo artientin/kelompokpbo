@@ -7,7 +7,7 @@ class Auth
     {
         $this->conn = $conn;
     }
-
+    
     public function registerUser($username, $email, $password, $cpassword)
     {
         if ($this->isUserLoggedIn()) {
@@ -21,10 +21,10 @@ class Auth
                 if ($this->insertUserToDatabase($username, $email, $hashedPassword)) {
                     $this->redirect("../view/index.php");
                 } else {
-                    $this->showAlert('Woops! Terjadi kesalahan.');
+                    $this->showAlert('Terjadi Kesalahan.');
                 }
             } else {
-                $this->showAlert('Woops! Email Sudah Terdaftar.');
+                $this->showAlert('Email Sudah Terdaftar.');
             }
         } else {
             $this->showAlert('Password Tidak Sesuai');
@@ -48,7 +48,7 @@ class Auth
             $_SESSION['username'] = $result->fetch_assoc()['username'];
             $this->redirect("../view/index.php");
         } else {
-            $this->showAlert('Login failed. Check your email and password.');
+            $this->showAlert('Login Failed. Check Your Email and Password.');
         }
     }
 

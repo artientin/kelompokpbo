@@ -1,4 +1,3 @@
-githa 
 <?php
 include 'config.php';
 
