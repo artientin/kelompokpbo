@@ -204,7 +204,7 @@ if(!isset($_SESSION['username'])){
     mysqli_query($conn, "INSERT INTO subscribe SET
     email = '$_POST[sub]'");
     
-    echo "<script>alert('Email telah dikirim')</script>";
+    echo "<script>alert('Email telah berhasil dikirim')</script>";
   }
   ?>
 
@@ -268,13 +268,13 @@ if(!isset($_SESSION['username'])){
                 <a href="">
                   <i class="fa fa-phone" aria-hidden="true"></i>
                   <span>
-                    Call +62 823-3506-1589
+                    Call +62 867-2354-088
                   </span>
                 </a>
                 <a href="">
                   <i class="fa fa-envelope" aria-hidden="true"></i>
                   <span>
-                    pbo@gmail.com
+                    pbo444444@gmail.com
                   </span>
                 </a>
               </div>
