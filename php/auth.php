@@ -11,7 +11,7 @@ class Auth
     public function registerUser($username, $email, $password, $cpassword)
     {
         if ($this->isUserLoggedIn()) {
-            $this->redirect("../view/index.php");
+            header("Location: ../view/index.pph");
         }
 
         if ($this->validatePasswords($password, $cpassword)) {
@@ -89,6 +89,7 @@ class Auth
     private function redirect($location)
     {
         header("Location: $location");
+        
         exit();
     }
 
