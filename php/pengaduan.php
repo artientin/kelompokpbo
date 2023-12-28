@@ -1,20 +1,17 @@
 <?php
 include 'config.php';
 
-class PengaduanHandler {
-    private $conn;
+class Pengadu
+{ //disini ada konsep oop class
+    protected $conn; //encasulapsi karena $con hanya bisa di akses oleh class pengadu dan kelas turunan(terlindungi)
 
-    public function __construct($conn) {
+    public function __construct($conn)
+    {
         $this->conn = $conn;
     }
 
-    public function createPengaduan($pengaduData, $kejadianData) {
-        $this->insertPengadu($pengaduData);
-        $this->insertKejadian($kejadianData);
-        echo "<script>alert('Berhasil Membuat Pengaduan')</script>";
-    }
-
-    private function insertPengadu($data) {
+    public function insertPengadu($data)
+    {
         $query = "INSERT INTO pengadu SET
             nama = '{$data['nama']}',
             jenis_kelamin = '{$data['jenis_kelamin']}',
@@ -28,8 +25,12 @@ class PengaduanHandler {
 
         mysqli_query($this->conn, $query);
     }
+}
 
-    private function insertKejadian($data) {
+class Kejadian extends Pengadu
+{ //inheritance karena pewarisan dari kelas pengadu
+    public function insertKejadian($data)
+    {
         $query = "INSERT INTO kejadian SET
             perihal = '{$data['perihal']}',
             lokasi = '{$data['lokasi']}',
@@ -41,8 +42,18 @@ class PengaduanHandler {
     }
 }
 
+class PengaduanHandler extends Kejadian
+{ //inheritance pewarisan dari class kejadian
+    public function createPengaduan($pengaduData, $kejadianData)
+    {
+        $this->insertPengadu($pengaduData);
+        $this->insertKejadian($kejadianData);
+        echo "<script>alert('Berhasil Membuat Pengaduan')</script>";
+    }
+}
+
 if (isset($_POST['buat'])) {
-    $pengaduanHandler = new PengaduanHandler($conn);
+    $pengaduanHandler = new PengaduanHandler($conn); //objek
 
     $pengaduData = array(
         'nama' => $_POST['nama'],
@@ -66,4 +77,3 @@ if (isset($_POST['buat'])) {
 
     $pengaduanHandler->createPengaduan($pengaduData, $kejadianData);
 }
-?>
