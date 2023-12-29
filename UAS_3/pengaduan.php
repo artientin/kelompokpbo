@@ -2,7 +2,7 @@
 include 'config.php';
 
 interface PengaduanInterface {
-    public function insertData($data);
+    public function insertData($data);}
 
 class Pengadu implements PengaduanInterface {
     protected $conn;
