@@ -167,16 +167,16 @@ include '../php/pengaduan.php';
   </div>
 
   <!-- end form section -->
-  
+
   <?php
-  include '../php/config.php';
-  if (isset($_POST['tambah'])){
+include '../php/config.php';
+if (isset($_POST['tambah'])) {
     mysqli_query($conn, "INSERT INTO subscribe SET
     email = '$_POST[sub]'");
-    
+
     echo "<script>alert('Email telah dikirim')</script>";
-  }
-  ?>
+}
+?>
 
   <div class="footer_container">
     <!-- info section -->
