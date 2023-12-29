@@ -1,16 +1,19 @@
 <?php
 include 'config.php';
 
-class Pengadu
-{ //disini ada konsep oop class
-    protected $conn; //encasulapsi karena $con hanya bisa di akses oleh class pengadu dan kelas turunan(terlindungi)
+interface PengaduanInterface { //
+    public function insertData($data);//interfacenya polimorphism untuk mendefinisikan satu atau lebih metode 
+}
+
+class Pengadu implements PengaduanInterface {//ada konsep oop Claass (kelas induk)
+    protected $conn;//encapsulasi karena hanya dapat diakses oleh kelas induk dan juga kelas turunan(terbungkus)
 
     public function __construct($conn)
     {
         $this->conn = $conn;
     }
 
-    public function insertPengadu($data)
+    public function insertData($data)
     {
         $query = "INSERT INTO pengadu SET
             nama = '{$data['nama']}',
@@ -27,9 +30,8 @@ class Pengadu
     }
 }
 
-class Kejadian extends Pengadu
-{ //inheritance karena pewarisan dari kelas pengadu
-    public function insertKejadian($data)
+class Kejadian extends Pengadu implements PengaduanInterface {
+    public function insertData($data) // polimorphism karena sama method dan beda perlakuan atau akan masuk ke class kejadian
     {
         $query = "INSERT INTO kejadian SET
             perihal = '{$data['perihal']}',
@@ -42,18 +44,16 @@ class Kejadian extends Pengadu
     }
 }
 
-class PengaduanHandler extends Kejadian
-{ //inheritance pewarisan dari class kejadian
-    public function createPengaduan($pengaduData, $kejadianData)
+class PengaduanHandler {
+    public function createPengaduan(PengaduanInterface $pengaduanObj, $data)
     {
-        $this->insertPengadu($pengaduData);
-        $this->insertKejadian($kejadianData);
+        $pengaduanObj->insertData($data);// polimorphism karena sama method dan beda perlakuan atau akan masuk ke class pengaduan
         echo "<script>alert('Berhasil Membuat Pengaduan')</script>";
     }
 }
 
 if (isset($_POST['buat'])) {
-    $pengaduanHandler = new PengaduanHandler($conn); //objek
+    $pengaduanHandler = new PengaduanHandler();//objek
 
     $pengaduData = array(
         'nama' => $_POST['nama'],
@@ -75,5 +75,12 @@ if (isset($_POST['buat'])) {
         'file_pendukung' => $_POST['file_pendukung']
     );
 
-    $pengaduanHandler->createPengaduan($pengaduData, $kejadianData);
+    // Membuat objek untuk Pengadu
+    $pengadu = new Pengadu($conn);
+    $pengaduanHandler->createPengaduan($pengadu, $pengaduData);
+
+    // Membuat objek untuk Kejadian
+    $kejadian = new Kejadian($conn);
+    $pengaduanHandler->createPengaduan($kejadian, $kejadianData);
 }
+?>
