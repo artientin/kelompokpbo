@@ -1,13 +1,11 @@
 <?php
 include 'config.php';
 
-interface PengaduanInterface { //
-    public function insertData($data);//interfacenya polimorphism untuk mendefinisikan satu atau lebih metode 
-}
+interface PengaduanInterface {
+    public function insertData($data);
 
-class Pengadu implements PengaduanInterface {//ada konsep oop Claass (kelas induk)
-    protected $conn;//encapsulasi karena hanya dapat diakses oleh kelas induk dan juga kelas turunan(terbungkus)
-
+class Pengadu implements PengaduanInterface {
+    protected $conn;
     public function __construct($conn)
     {
         $this->conn = $conn;
@@ -31,7 +29,7 @@ class Pengadu implements PengaduanInterface {//ada konsep oop Claass (kelas indu
 }
 
 class Kejadian extends Pengadu implements PengaduanInterface {
-    public function insertData($data) // polimorphism karena sama method dan beda perlakuan atau akan masuk ke class kejadian
+    public function insertData($data) 
     {
         $query = "INSERT INTO kejadian SET
             perihal = '{$data['perihal']}',
@@ -47,13 +45,13 @@ class Kejadian extends Pengadu implements PengaduanInterface {
 class PengaduanHandler {
     public function createPengaduan(PengaduanInterface $pengaduanObj, $data)
     {
-        $pengaduanObj->insertData($data);// polimorphism karena sama method dan beda perlakuan atau akan masuk ke class pengaduan
+        $pengaduanObj->insertData($data);
         echo "<script>alert('Berhasil Membuat Pengaduan')</script>";
     }
 }
 
 if (isset($_POST['buat'])) {
-    $pengaduanHandler = new PengaduanHandler();//objek
+    $pengaduanHandler = new PengaduanHandler();
 
     $pengaduData = array(
         'nama' => $_POST['nama'],
@@ -75,11 +73,11 @@ if (isset($_POST['buat'])) {
         'file_pendukung' => $_POST['file_pendukung']
     );
 
-    // Membuat objek untuk Pengadu
+ 
     $pengadu = new Pengadu($conn);
     $pengaduanHandler->createPengaduan($pengadu, $pengaduData);
 
-    // Membuat objek untuk Kejadian
+
     $kejadian = new Kejadian($conn);
     $pengaduanHandler->createPengaduan($kejadian, $kejadianData);
 }
