@@ -1,6 +1,6 @@
 <?php
-include "../php/auth.php";
-include '../php/config.php';
+include "../UAS_3/auth.php";
+include '../UAS_3/config.php';
 session_start();
 $auth = new Auth($conn);
 if (isset($_POST['submit'])) {
@@ -15,9 +15,10 @@ if(isset($_SESSION['username'])){
 }
 
 ?>
- 
+
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,6 +26,7 @@ if(isset($_SESSION['username'])){
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>PBO</title>
 </head>
+
 <body>
     <div class="container">
         <form action="" method="POST" class="login-email">
@@ -36,10 +38,11 @@ if(isset($_SESSION['username'])){
                 <input type="password" placeholder="Password" name="password" required>
             </div>
             <div class="input-group">
-                <button name="submit" class="btn">Login</button>
+                <button name="submit" class="btn">Selamat Ujian</button>
             </div>
             <p class="login-register-text">Anda belum punya akun? <a href="register.php">Register</a></p>
         </form>
     </div>
 </body>
+
 </html>

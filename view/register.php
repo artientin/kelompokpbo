@@ -1,7 +1,7 @@
 <?php
 // eqwrror_reporting(0);
-include '../php/config.php';
-include '../php/auth.php';
+include '../UAS_3/config.php';
+include '../uAS_3/auth.php';
 // Assuming $conn is your database connection
 session_start(); // Start the session if not started
 
@@ -20,9 +20,10 @@ if (isset($_POST['submit'])) {
     $registration->registerUser($username, $email, $password, $cpassword);
 }
 ?>
- 
+
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,6 +31,7 @@ if (isset($_POST['submit'])) {
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>Pemrograman Berorientasi Objek</title>
 </head>
+
 <body>
     <div class="container">
         <form action="" method="POST" class="login-email">
@@ -41,10 +43,10 @@ if (isset($_POST['submit'])) {
                 <input type="email" placeholder="Email" name="email" required>
             </div>
             <div class="input-group">
-                <input type="password" placeholder="Password" name="password"  required>
+                <input type="password" placeholder="Password" name="password" required>
             </div>
             <div class="input-group">
-                <input type="password" placeholder="Confirm Password" name="cpassword"  required>
+                <input type="password" placeholder="Confirm Password" name="cpassword" required>
             </div>
             <div class="input-group">
                 <button type="submit" name="submit" class="btn">Register</button>
@@ -53,4 +55,5 @@ if (isset($_POST['submit'])) {
         </form>
     </div>
 </body>
+
 </html>
