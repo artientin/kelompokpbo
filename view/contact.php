@@ -112,7 +112,7 @@ include '../UAS_3/kontak.php';
     <!-- end contact section -->
 
     <?php
-include '../php/config.php';
+include '../UAS_3/config.php';
 if (isset($_POST['tambah'])) {
     mysqli_query($conn, "INSERT INTO subscribe SET
     email = '$_POST[sub]'");
